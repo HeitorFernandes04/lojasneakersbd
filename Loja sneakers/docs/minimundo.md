@@ -1,0 +1,11 @@
+# Minimundo – Sistema de Loja de Tênis
+
+Uma loja voltada para a venda de tênis de diferentes marcas, modelos, tamanhos e estilos decidiu desenvolver um sistema informatizado para organizar melhor seu catálogo de produtos e facilitar a criação de anúncios de venda, acessado apenas por usuários cadastrados.
+
+No sistema, cada usuário possui um login e uma senha para acessar a aplicação. Após autenticado, o usuário pode cadastrar diferentes modelos de tênis disponíveis para venda. Para cada tênis cadastrado, são armazenadas informações como **marca**, **modelo**, **tamanho**, **cor**, **tipo** (por exemplo, casual, esportivo, corrida, skate) e, opcionalmente, uma **foto** ilustrativa. Esses dados são utilizados tanto para controle interno quanto para a divulgação dos produtos.
+
+Além do cadastro de tênis, o sistema permite que o usuário crie **anúncios** associados a um tênis específico. Cada anúncio contém um **título**, uma **descrição** detalhada do produto e o **preço** de venda, além do registro automático da **data de criação** e da **última atualização**. Um anúncio sempre pertence a um único usuário (seu criador) e sempre está vinculado a um único tênis previamente cadastrado no sistema. Assim, um mesmo tênis pode ter mais de um anúncio ao longo do tempo, e um usuário pode manter vários anúncios ativos.
+
+Os usuários podem consultar a lista de todos os tênis cadastrados, editar as informações de um tênis ou removê-lo quando não for mais necessário. Da mesma forma, podem visualizar a lista de seus anúncios, cadastrar novos anúncios, atualizar anúncios existentes (por exemplo, alterando preço ou descrição) e excluir anúncios que não estejam mais válidos. O sistema também pode disponibilizar uma visualização geral de todos os anúncios cadastrados, permitindo que os usuários naveguem pelas ofertas disponíveis.
+
+Do ponto de vista de negócio, o sistema deve garantir que **apenas usuários autenticados** possam cadastrar, alterar ou excluir tênis e anúncios. Não é permitido criar um anúncio sem que exista um tênis associado, nem manter anúncios sem vínculo com um usuário. As informações cadastradas são armazenadas em um **banco de dados relacional**, que será utilizado para consultas, geração de relatórios simples e, futuramente, integração com outras funcionalidades de venda online ou outros sistemas.
