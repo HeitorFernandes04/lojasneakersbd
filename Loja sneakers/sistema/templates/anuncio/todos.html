@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Todos os Anúncios{% endblock %}
+
+{% block content %}
+<div class="card card-body mb-4">
+    <h4>Todos os Anúncios</h4>
+    <p class="text-muted">Navegue pelos anúncios de todos os usuários</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for anuncio in lista_anuncios %}
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            {% if anuncio.tenis.foto %}
+            <a href="{% url 'detalhes-anuncio' anuncio.id %}">
+                <img src="{{ anuncio.tenis.foto.url }}" class="card-img-top" alt="{{ anuncio.tenis.modelo }}" style="height:200px; object-fit:cover;">
+            </a>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'detalhes-anuncio' anuncio.id %}">{{ anuncio.titulo }}</a></h5>
+                <p class="card-text"><strong>Preço:</strong> R$ {{ anuncio.preco }}</p>
+                <p class="card-text"><strong>Tênis:</strong> {{ anuncio.tenis }}</p>
+                <p class="card-text small text-muted"><strong>Anunciante:</strong> {{ anuncio.usuario.username }}</p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+                <div class="d-grid">
+                    <a href="{% url 'detalhes-anuncio' anuncio.id %}" class="btn btn-sm btn-outline-info">
+                        <i class="bi bi-info-circle me-1"></i> Ver Detalhes
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-secondary text-center py-4">
+            Nenhum anúncio encontrado.
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

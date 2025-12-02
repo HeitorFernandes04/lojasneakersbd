@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhes do Anúncio{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            {% if anuncio.tenis.foto %}
+            <img src="{{ anuncio.tenis.foto.url }}" class="card-img-top" alt="{{ anuncio.tenis.modelo }}" style="object-fit: cover; height: 400px;">
+            {% endif %}
+            <div class="card-body">
+                <h3>{{ anuncio.titulo }}</h3>
+                <p class="h4 text-success">R$ {{ anuncio.preco }}</p>
+                <hr>
+                <h5>Descrição</h5>
+                <p>{{ anuncio.descricao|linebreaks }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5>Tênis</h5>
+                <p>{{ anuncio.tenis.get_marca_display }} {{ anuncio.tenis.modelo }} (Tam. {{ anuncio.tenis.tamanho }})</p>
+                <ul class="list-unstyled small">
+                    <li><strong>Cor:</strong> {{ anuncio.tenis.get_cor_display }}</li>
+                    <li><strong>Tipo:</strong> {{ anuncio.tenis.get_tipo_display }}</li>
+                </ul>
+                <hr>
+                <p class="small text-muted"><strong>Anunciante:</strong> {{ anuncio.usuario.username }}</p>
+                
+                {% if is_owner %}
+                <div class="d-flex gap-2 mb-2">
+                    <button type="button" class="btn btn-outline-primary btn-sm flex-fill" data-bs-toggle="modal" data-bs-target="#editAnuncioModal-{{ anuncio.id }}">
+                        <i class="bi bi-pencil-fill"></i> Editar
+                    </button>
+                    <button type="button" class="btn btn-outline-danger btn-sm flex-fill" data-bs-toggle="modal" data-bs-target="#deleteAnuncioModal-{{ anuncio.id }}">
+                        <i class="bi bi-trash-fill"></i> Excluir
+                    </button>
+                </div>
+                {% endif %}
+                
+                <a href="{% url 'todos-anuncios' %}" class="btn btn-secondary btn-sm mt-2 w-100">Voltar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if is_owner %}
+{% include 'anuncio/modals.html' with anuncio=anuncio %}
+{% endif %}
+
+{% endblock %}
