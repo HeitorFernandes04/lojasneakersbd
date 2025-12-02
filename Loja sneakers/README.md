@@ -1,4 +1,4 @@
-# Sistema de Loja de Tênis (HottSneakers)  
+# Sistema de Loja de Tênis
 Trabalho Prático – Banco de Dados (CRUD com Django + SQLite)
 
 ## 📌 Visão Geral
